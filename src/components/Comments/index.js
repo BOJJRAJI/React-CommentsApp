@@ -43,18 +43,12 @@ class Comments extends Component {
       profileBg: initialContainerBackgroundClassNames[backGroundColor],
     }
 
-    if (nameInput === '' && commentInput === '') {
-      this.setState({
-        nameInput: '',
-        commentInput: '',
-      })
-    } else {
-      this.setState(prevState => ({
+    
+    this.setState(prevState => ({
         commentsList: [...prevState.commentsList, newComment],
         nameInput: '',
         commentInput: '',
       }))
-    }
 
     console.log(commentsList)
   }
