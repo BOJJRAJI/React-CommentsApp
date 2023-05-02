@@ -1,0 +1,121 @@
+/* Write your CSS here */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+.card-container {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+.card-comment-heading {
+  font-family: 'Roboto';
+  color: #1e293b;
+  font-size: 30px;
+  font-weight: bold;
+  width: 100%;
+  align-items: center;
+}
+.form-image-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  box-shadow: 0px 1px 0px 0px #dee0e3;
+  padding-bottom: 10px;
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+.comment-heading {
+  font-family: 'Roboto';
+  color: #1e293b;
+  font-size: 25px;
+  font-weight: bold;
+}
+.text {
+  font-family: 'Roboto';
+  color: #475569;
+  font-size: 15px;
+}
+.name-element {
+  border: 1px solid #cbd2d9;
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+.comment-content {
+  border: 1px solid #cbd2d9;
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding-top: 5px;
+  padding-left: 5px;
+  font-family: 'Roboto';
+}
+.add-button {
+  background-color: #0ea5e9;
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  width: 160px;
+}
+.comment-image {
+  height: 250px;
+  width: 400px;
+  margin-top: 80px;
+}
+.comments-container {
+  display: flex;
+  flex-direction: column;
+}
+.comments-count-container {
+  display: flex;
+  flex-direction: row;
+}
+.count-para {
+  background-color: #0ea5e9;
+  color: #ffffff;
+  height: 20px;
+  border-radius: 4px;
+  width: 20px;
+  font-family: 'Roboto';
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  margin-right: 10px;
+}
+.count-text {
+  font-family: 'Roboto';
+  color: #1e293b;
+  font-size: 15px;
+  font-weight: bold;
+}
+.comments-list {
+  padding-left: 0px;
+  width: 100%;
+}
+@media screen and (max-width: 576px) {
+  .form-image-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .comment-image {
+    height: 100px;
+    width: 90%;
+    order: -1;
+    margin-top: 0px;
+  }
+  .app-container {
+    padding-top: 10px;
+  }
+}
