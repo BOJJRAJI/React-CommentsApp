@@ -72,7 +72,7 @@ class Comments extends Component {
   }
 
   render() {
-    const {commentsList} = this.state
+    const {commentsList,nameInput, commentInput} = this.state
     const count = commentsList.length
     return (
       <div className="app-container">
@@ -86,6 +86,7 @@ class Comments extends Component {
                 type="text"
                 placeholder="Your Name"
                 onChange={this.getName}
+                value={nameInput}
               />
               <textarea
                 className="comment-content"
@@ -93,6 +94,7 @@ class Comments extends Component {
                 cols="33"
                 placeholder="Your Comments"
                 onChange={this.getComment}
+                value={commentInput}
               />
               <button type="submit" className="add-button">
                 Add Comment
