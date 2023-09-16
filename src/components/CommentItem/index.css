@@ -27,44 +27,41 @@
 }
 
 /* Write your CSS here */
-.comment-list {
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0px 1px 0px 0px #dee0e3;
+.list-item {
+  background-color: #ffffff;
   width: 100%;
   list-style-type: none;
 }
-.date-profile-name-container {
+.profile-container {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  width: 100%;
+  justify-content: space-between;
+  width: 28%;
 }
-.profile-icon {
-  color: #ffffff;
-
+.profile-image {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 30px;
-  width: 30px;
-  border-radius: 15px;
-  margin-right: 5px;
+  padding: 10px;
+  border-radius: 20px;
+  height: 40px;
+  width: 40px;
+  color: white;
 }
 .name {
-  font-family: 'Roboto';
-  color: #1e293b;
   font-size: 15px;
-  font-weight: bold;
-}
-.date {
   font-family: 'Roboto';
-  color: #7e858e;
-  font-size: 10px;
-  font-weight: 800;
-  margin-top: 20px;
-  margin-left: 10px;
+  font-weight: bold;
+  color: #1e293b;
+}
+.date-comment-container {
+}
+.comment {
+  font-size: 13px;
+  font-family: 'Roboto';
+  font-weight: bold;
+  color: #475569;
 }
 .like-delete-container {
   display: flex;
@@ -76,30 +73,29 @@
   display: flex;
   flex-direction: row;
 }
-.like-icon {
-  height: 30px;
-  width: 30px;
-}
-.like-text {
-  color: #94a3b8;
-  font-family: 'Roboto';
-  font-size: 10px;
-  font-weight: 600;
-  margin-left: 10px;
-}
-.comment {
-  color: #7e858e;
-  font-family: 'Roboto';
-  font-size: 13px;
-}
-.delete-button {
+.like-button {
   background-color: transparent;
   border: none;
 }
-.delete-icon {
-  height: 30px;
-  width: 30px;
+.like-image {
+  height: 20px;
+  width: 20px;
+  color: #334155;
 }
-.liked-text {
-  color: #0b69ff;
+.active-like {
+  font-size: 13px;
+  font-family: 'Roboto';
+  font-weight: bold;
+  color: #0284c7;
+}
+.normal-like {
+  font-size: 13px;
+  font-family: 'Roboto';
+  font-weight: bold;
+  color: #334155;
+}
+@media screen and (max-width: 576px) {
+  .profile-container {
+    width: 80%;
+  }
 }
