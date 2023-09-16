@@ -1,7 +1,5 @@
 import {Component} from 'react'
-
 import {v4} from 'uuid'
-
 import CommentItem from '../CommentItem'
 import './index.css'
 
@@ -16,114 +14,106 @@ const initialContainerBackgroundClassNames = [
 ]
 
 class Comments extends Component {
-  state = {commentsList: [], nameInput: '', commentInput: ''}
+  state = {name: '', comment: '', commentsList: []}
 
-  getName = event => {
-    this.setState({nameInput: event.target.value})
+  getName = e => {
+    this.setState({name: e.target.value})
   }
 
-  getComment = event => {
-    this.setState({commentInput: event.target.value})
+  getComment = e => {
+    this.setState({comment: e.target.value})
   }
 
-  addComment = event => {
-    event.preventDefault()
-    const {commentsList, nameInput, commentInput} = this.state
-
-    const backGroundColor = Math.ceil(
-      Math.random() * initialContainerBackgroundClassNames.length - 1,
+  addComment = () => {
+    const {name, comment} = this.state
+    const index = Math.ceil(
+      Math.random() * (initialContainerBackgroundClassNames.length - 1),
     )
+    const bgColor = initialContainerBackgroundClassNames[index]
 
-    const newComment = {
+    const commentItem = {
       id: v4(),
-      name: nameInput,
-      comment: commentInput,
-      date: new Date(),
       isLike: false,
-      profileBg: initialContainerBackgroundClassNames[backGroundColor],
+      name,
+      comment,
+      bgColor,
+      date: new Date(),
     }
-
-    
     this.setState(prevState => ({
-        commentsList: [...prevState.commentsList, newComment],
-        nameInput: '',
-        commentInput: '',
-      }))
-
-    console.log(commentsList)
+      commentsList: [...prevState.commentsList, commentItem],
+      name: '',
+      comment: '',
+    }))
   }
 
   deleteComment = id => {
     const {commentsList} = this.state
-    const filteredList = commentsList.filter(comment => comment.id !== id)
-
-    this.setState({commentsList: filteredList})
+    const filterList = commentsList.filter(item => item.id !== id)
+    this.setState({commentsList: filterList})
   }
 
-  likedComment = id => {
+  toggleLike = id => {
     this.setState(prevState => ({
-      commentsList: prevState.commentsList.map(eachComment => {
-        if (eachComment.id === id) {
-          return {...eachComment, isLike: !eachComment.isLike}
+      commentsList: prevState.commentsList.map(item => {
+        if (item.id === id) {
+          return {...item, isLike: !item.isLike}
         }
-        return eachComment
+        return item
       }),
     }))
   }
 
   render() {
-    const {commentsList,nameInput, commentInput} = this.state
-    const count = commentsList.length
+    const {name, comment, commentsList} = this.state
+    console.log(commentsList)
     return (
-      <div className="app-container">
-        <div className="card-container">
-          <div className="form-image-container">
-            <form className="form-container" onSubmit={this.addComment}>
-              <h1 className="comment-heading">Comments</h1>
-              <p className="text">Say Something about 4.0 TEchnologies</p>
-              <input
-                className="name-element"
-                type="text"
-                placeholder="Your Name"
-                onChange={this.getName}
-                value={nameInput}
-              />
-              <textarea
-                className="comment-content"
-                rows="8"
-                cols="33"
-                placeholder="Your Comments"
-                onChange={this.getComment}
-                value={commentInput}
-              />
-              <button type="submit" className="add-button">
-                Add Comment
-              </button>
-            </form>
-
-            <img
-              src="https://assets.ccbp.in/frontend/react-js/comments-app/comments-img.png "
-              alt="comments"
-              className="comment-image"
+      <div className="bg-container">
+        <div className="card">
+          <form className="data-container" onSubmit={this.addComment}>
+            <h1 className="heading">Comments</h1>
+            <p className="text">Say Something About 4.0 Technologies</p>
+            <input
+              placeholder="Your Name"
+              className="input-element"
+              type="text"
+              onChange={this.getName}
+              value={name}
             />
-          </div>
-          <div className="comments-container">
-            <div className="comments-count-container">
-              <p className="count-para">{count}</p>
-              <p className="count-text">Comments</p>
-            </div>
-            <ul className="comments-list">
-              {commentsList.map(eachItem => (
-                <CommentItem
-                  details={eachItem}
-                  key={eachItem.id}
-                  deleteComment={this.deleteComment}
-                  likedComment={this.likedComment}
-                />
-              ))}
-            </ul>
-          </div>
+            <textarea
+              rows="10"
+              cols="30"
+              value={comment}
+              className="textarea-element"
+              placeholder="Your Comment"
+              onChange={this.getComment}
+            />
+            <button className="add-comment-button" type="submit">
+              Add Comment
+            </button>
+          </form>
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/comments-app/comments-img.png"
+            alt="comments"
+            className="image"
+          />
         </div>
+        <hr className="line" />
+        <div className="count-container">
+          <button className="count-button" type="button">
+            {commentsList.length}
+          </button>
+          <p className="text-comment">Comments</p>
+        </div>
+        <ul className="comments-container">
+          {commentsList.map(item => (
+            <CommentItem
+              itemDetails={item}
+              key={item.id}
+              deleteComment={this.deleteComment}
+              toggleLike={this.toggleLike}
+            />
+          ))}
+        </ul>
       </div>
     )
   }
